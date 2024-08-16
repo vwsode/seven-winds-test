@@ -1,13 +1,27 @@
-import './App.style.scss'
+import React from "react";
+import "./App.style.scss";
+
+import { Table } from "./components/Table";
+import { Sidebar } from "./components/Sidebar/Sidebar";
+import Header from "./components/Header/Header";
+
+import { useGetRowsQuery } from "./api/outlayRowsApi";
+import { COLUMNS, eID, menuLinks } from "./constants";
 
 export function App() {
-    const params = Object.entries({
-        cc_load_policy: 0,
-        controls: 2,
-        fs: 0,
-        rel: 0,
-        showinfo: 0
-    }).map(([key, value]) => `${key}=${value}`).join('&')
+  const { data, isLoading } = useGetRowsQuery(eID);
 
-    return <iframe src={'https://youtube.com/embed/BNflNL40T_M?' + params} />
+  if (!data && isLoading) {
+    return null;
+  }
+
+  return (
+    <div className="app">
+      <Header />
+      <div className="content">
+        <Sidebar links={menuLinks} />
+        <Table columns={COLUMNS} rows={data ?? []} />
+      </div>
+    </div>
+  );
 }

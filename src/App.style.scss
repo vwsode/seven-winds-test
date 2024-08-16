@@ -1,19 +1,48 @@
 body {
-    margin: 0;
-    height: 100vh;
-    width: 100vw;
+  margin: 0;
+  height: 100vh;
+  background-color: #202124;
+  color: white;
+  font-family: Roboto;
 
-    > #root {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: inherit;
-        width: inherit;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    height: max-content;
+    // max-width: 1700px;
+    // margin-left: 220px;
+    table-layout: fixed;
+  }
 
-        > iframe {
-            height: 100%;
-            width: 100%;
-            border: unset;
-        }
+  > #root {
+    display: flex;
+    align-items: flex-start;
+    // justify-content: center;
+    justify-content: flex-start;
+    height: inherit;
+    width: inherit;
+
+    > iframe {
+      height: 100%;
+      width: 100%;
+      border: unset;
     }
+  }
+
+  .content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+
+  .app {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
